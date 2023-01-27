@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Book" ALTER COLUMN "category" SET DATA TYPE TEXT,
+ALTER COLUMN "author" SET DATA TYPE TEXT;

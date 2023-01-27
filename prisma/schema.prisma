@@ -7,25 +7,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Author {
-  id   Int    @id(map: "Author_pk") @default(autoincrement())
-  name String @unique @db.VarChar(30)
-  Book Book[]
-}
-
 model Book {
-  id          Int      @id(map: "Book_pk") @default(autoincrement())
-  name        String   @unique
-  categoryId  Int
-  authorId    Int
-  read        Boolean
-  publisherId Int
-  Category    Category @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Book_fk0")
-  Author      Author   @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Book_fk1")
+  id       Int    @id(map: "Book_pk") @default(autoincrement())
+  name     String @unique
+  category String
+  author   String
+  userId   Int
+  User     User   @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Book_fk0")
 }
 
-model Category {
-  id   Int    @id(map: "Category_pk") @default(autoincrement())
-  name String @unique @db.VarChar(30)
-  Book Book[]
+model Profile {
+  id     Int     @id(map: "Profile_pk") @default(autoincrement())
+  bio    String? @db.VarChar(255)
+  userId Int     @unique
+  User   User    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Profile_fk0")
+}
+
+model User {
+  id       Int      @id(map: "User_pk") @default(autoincrement())
+  name     String   @db.VarChar(30)
+  email    String   @unique
+  password String
+  Book     Book[]
+  Profile  Profile?
 }
