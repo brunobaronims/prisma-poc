@@ -20,7 +20,7 @@ async function signIn(params: SignInParams): Promise<SignInResult> {
         throw new Error();
 
     const secret: string = env.get('JWT_SECRET').required().asString();
-    const token = jwt.sign({ id }, secret);
+    const token = jwt.sign({id: id}, secret);
     await sessionRepository.create({
         token: token,
         userId: id

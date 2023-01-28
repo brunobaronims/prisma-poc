@@ -5,7 +5,7 @@ dotenv.config();
 import { connectDb } from "./config/database";
 import { bookRouter } from "./api/routes/bookRouter";
 import { userRouter } from "./api/routes/userRouter";
-import authRouter from "./api/routes/authRouter";
+import { authRouter } from "./api/routes/authRouter";
 
 const app = express();
 app

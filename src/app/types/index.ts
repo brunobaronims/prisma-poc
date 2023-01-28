@@ -3,7 +3,9 @@ import { Book, User } from "@prisma/client";
 
 export type ValidationMiddleware = (req: Request, res: Response, next: NextFunction) => void;
 
-export type PostBookParams = Omit<Book, "id" | "userId" | "User">;
+export type CreatedBookParams = Omit<Book, "id">;
+
+export type UpdatedBookParams = Pick<CreatedBookParams, "startedAt" | "finishedAt">
 
 export type CreateUserParams = Omit<User, "id">
 

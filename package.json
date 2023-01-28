@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "nodemon src/main.ts"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "author": "Bruno Baroni <brunobaronims@gmail.com>",
   "license": "MIT",
   "dependencies": {
