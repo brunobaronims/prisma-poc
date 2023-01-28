@@ -5,8 +5,8 @@ async function addBook(params: CreatedBookParams) {
     return bookRepository.addBook(params);
 };
 
-async function getBooksList() {
-    return bookRepository.getBooks();
+async function getBooksList(userId: number) {
+    return bookRepository.getBooks(userId);
 }
 
 const bookService = {

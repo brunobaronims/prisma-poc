@@ -3,8 +3,13 @@ import { Book } from '@prisma/client';
 import { prisma } from '../../config/database';
 import { CreatedBookParams, UpdatedBookParams } from '../../app/types/index';
 
-async function getBooks(): Promise<Book[]> {
-    const booksList = await prisma.book.findMany();
+async function getBooks(userId: number): Promise<Book[]> {
+    console.log(userId);
+    const booksList = await prisma.book.findMany({
+        where: {
+            userId: userId
+        }
+    });
 
     return booksList;
 };

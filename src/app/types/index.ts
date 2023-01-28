@@ -17,7 +17,7 @@ export type SignInResult = {
 };
 
 export type JWTPayload = {
-    userId: number;
+    id: number;
 };
 export type AuthenticatedRequest = Request & JWTPayload;
 
