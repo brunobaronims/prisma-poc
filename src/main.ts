@@ -5,12 +5,14 @@ dotenv.config();
 import { connectDb } from "./config/database";
 import { bookRouter } from "./api/routes/bookRouter";
 import { userRouter } from "./api/routes/userRouter";
+import authRouter from "./api/routes/authRouter";
 
 const app = express();
 app
   .use(json())
   .use('/books', bookRouter)
-  .use('/users', userRouter);
+  .use('/users', userRouter)
+  .use('/auth', authRouter)
 
 
 connectDb();

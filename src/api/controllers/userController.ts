@@ -10,8 +10,8 @@ export async function postUser(req: Request, res: Response) {
     } = req.body;
 
     try {
-        await userService.createUser({ email, password, name });
-        return res.sendStatus(httpStatus.CREATED);
+        const user = await userService.createUser({email, password, name});
+        return res.status(httpStatus.CREATED).send(user);
     } catch (e) {
         return res.status(httpStatus.BAD_REQUEST).send(e);
     }
